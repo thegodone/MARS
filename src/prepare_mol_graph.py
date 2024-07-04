@@ -728,17 +728,17 @@ class MoleculeDataset(Dataset):
 if __name__ == "__main__":
     # for split in ['test', 'valid', 'train']:
     for split in ['valid', 'train']:
-        dataset_train = MoleculeDataset('data6/USPTO50K', split)
+        dataset_train = MoleculeDataset('data/USPTO50K', split)
         dataset_train.process_data()
 
-    dataset_train = MoleculeDataset('data6/USPTO50K', 'train')
+    dataset_train = MoleculeDataset('data/USPTO50K', 'train')
     motif_vocabs = dataset_train.motif_vocab
     with open('data6/USPTO50K/motif_vocab.pkl', 'wb') as f:
         pickle.dump(motif_vocabs, f)
     # exit(1)
     for split in ['valid', 'train', 'test']:
     # for split in ['train']:
-        dataset_test = MoleculeDataset('data6/USPTO50K', split)
+        dataset_test = MoleculeDataset('data/USPTO50K', split)
         dataset_test.encode_transformation(dataset_train.motif_vocab)
 
     # exit(1)
