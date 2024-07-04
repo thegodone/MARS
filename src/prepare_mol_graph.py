@@ -733,7 +733,7 @@ if __name__ == "__main__":
 
     dataset_train = MoleculeDataset('data/USPTO50K', 'train')
     motif_vocabs = dataset_train.motif_vocab
-    with open('data6/USPTO50K/motif_vocab.pkl', 'wb') as f:
+    with open('data/USPTO50K/motif_vocab.pkl', 'wb') as f:
         pickle.dump(motif_vocabs, f)
     # exit(1)
     for split in ['valid', 'train', 'test']:
