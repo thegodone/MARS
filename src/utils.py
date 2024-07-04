@@ -2,10 +2,14 @@ import numpy as np
 import torch
 from torch_geometric.data import Data
 from rdkit import Chem
-from prepare_mol_graph import get_atom_feature, get_bond_features
+
+def use_prepare_mol_graph_functions():
+    from prepare_mol_graph import get_atom_feature, get_bond_features
+
 
 
 def get_submol_by_edits(p_smi, transform, type=None):
+    use_prepare_mol_graph_functions()
     # edit is break bonds
     p_mol = Chem.MolFromSmiles(p_smi, sanitize=False)
     mol = Chem.RWMol(p_mol)
