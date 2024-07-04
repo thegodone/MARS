@@ -449,8 +449,14 @@ class MoleculeDataset(Dataset):
 
             # make the reactant kekulized in the same way as the product
             r_mol_kekulized, p_mol_kekulized = chemutils.align_kekule_pairs(r_mol, p_mol)   # 对齐凯库勒式
-            r_smi = Chem.MolToSmiles(r_mol_kekulized, kekuleSmiles=True)
-            p_smi = Chem.MolToSmiles(p_mol_kekulized, kekuleSmiles=True)
+            try:
+                r_smi = Chem.MolToSmiles(r_mol_kekulized, kekuleSmiles=True)
+                p_smi = Chem.MolToSmiles(p_mol_kekulized, kekuleSmiles=True)
+            except:
+                print('can kekule after align_kekule_pairs, skip')
+                skipped += 1
+                continue
+                
             if not chemutils.cycle_transform(mol=r_mol_kekulized):
                 print('can not make the reactant kekulized in the same way as the product')
                 Chem.Kekulize(r_mol)
