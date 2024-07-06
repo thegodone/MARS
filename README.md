@@ -3,6 +3,8 @@
 # conda environment
 We recommend to new a Conda environment to run the code. We use Python-3.7, PyTorch-1.6.0, PyTorch-Geometric-2.0.2 and rdkit-202003.3.0.
 
+dependencies: tensorboardX
+
 # Step-1: Data Processing
 
 Run this command to convert reactions to molecular graphs, generate motif vocabulary and transformation paths:
