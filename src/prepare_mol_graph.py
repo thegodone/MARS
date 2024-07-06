@@ -742,6 +742,12 @@ if __name__ == "__main__":
     with open('data/USPTO50K/motif_vocab.pkl', 'wb') as f:
         pickle.dump(motif_vocabs, f)
     # exit(1)
+
+    # Must launch test procsss_data before encode_transformation step if test is in split!
+    dataset_test = MoleculeDataset('data/USPTO50K', split='test')
+    dataset_test.process_data()
+
+    
     for split in ['valid', 'train', 'test']:
     # for split in ['train']:
         dataset_test = MoleculeDataset('data/USPTO50K', split)
