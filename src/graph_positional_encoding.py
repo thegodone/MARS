@@ -18,8 +18,8 @@ def scipy_laplacian_positional_encoding(adj_matrix, pos_enc_dim, tol=1e-2):
     if isinstance(adj_matrix, torch.Tensor):
         adj_matrix = adj_matrix.cpu().numpy()
     # Laplacian
-    A = adj_matrix.astype(np.float)
-    N = sparse.diags(A.sum(0).clip(1) ** -0.5, dtype=np.float)
+    A = adj_matrix.astype(np.float64)
+    N = sparse.diags(A.sum(0).clip(1) ** -0.5, dtype=np.float64)
     L = sparse.eye(A.shape[0]) - N * A * N
 
     # Eigenvectors with scipy
@@ -40,8 +40,8 @@ def numpy_laplacian_positional_encoding(adj_matrix, pos_enc_dim, training=True):
     if isinstance(adj_matrix, torch.Tensor):
         adj_matrix = adj_matrix.cpu().numpy()
     # Laplacian
-    A = adj_matrix.astype(np.float)
-    N = sparse.diags(A.sum(0).clip(1) ** -0.5, dtype=np.float)
+    A = adj_matrix.astype(np.float64)
+    N = sparse.diags(A.sum(0).clip(1) ** -0.5, dtype=np.float64)
     L = sparse.eye(A.shape[0]) - N * A * N
 
     # Eigenvectors with numpy
