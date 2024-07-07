@@ -1,4 +1,4 @@
-import collections
+dumpimport collections
 import copy
 import json
 import numpy as np
@@ -636,9 +636,13 @@ class MoleculeDataset(Dataset):
             }
 
             processed_data_file = os.path.join(self.processed_dir, '{}.pkl'.format(k))
-            self.process_data_files.append(processed_data_file)
-            with open(processed_data_file, 'wb') as f:
-                pickle.dump(precessed_rxn, f, protocol=pickle.HIGHEST_PROTOCOL)
+            
+            if not isinstance(precessed_rxn, dict):
+                print("Error: Data is not a dictionary!")
+            else:
+                self.process_data_files.append(processed_data_file)
+                with open(processed_data_file, 'wb') as f:
+                    pickle.dump(precessed_rxn, f, protocol=pickle.HIGHEST_PROTOCOL)
 
         # print("minminmin============================", min_atom_n)
         with open(self.indexed_motifs_json.replace('indexed_motifs.json', 'lg_smis.json'), 'w', encoding='utf-8') as f:
