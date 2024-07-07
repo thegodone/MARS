@@ -285,7 +285,7 @@ def main():
     parser.add_argument('--JK', type=str, default="concat",
                         help='how the node features across layers are combined. last, sum, max or concat')
     parser.add_argument('--gnn_type', type=str, default="transformer")
-    parser.add_argument('--dataset', type=str, default='data3/USPTO50K',
+    parser.add_argument('--dataset', type=str, default='data/USPTO50K',
                         help='root directory of dataset.')
     parser.add_argument('--atom_feat_dim', type=int, default=45, help="atom feature dimension.")
     parser.add_argument('--bond_feat_dim', type=int, default=12, help="bond feature dimension.")
