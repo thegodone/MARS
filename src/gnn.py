@@ -72,7 +72,14 @@ class RNN_model(torch.nn.Module):
             Mish(),
             nn.Linear(in_features=hidden_size, out_features=4)
         )
-
+                     
+        self.MLP_state = nn.Sequential(
+            nn.Linear(in_features=self.hidden_size + self.hidden_size, out_features=self.hidden_size),
+            Mish(),
+            nn.Dropout(0.1),
+            nn.Linear(in_features=self.hidden_size, out_features=8)  # Assuming 8 possible states
+        )
+                     
         self.bce = nn.BCEWithLogitsLoss(reduction="sum")
         self.ce = nn.CrossEntropyLoss(reduction='sum')
 
