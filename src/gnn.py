@@ -35,6 +35,7 @@ class RNN_model(torch.nn.Module):
         # 3: continue atom transformation, 4: transition to motif generation
         # 6: motif generation start from synthon attachment
         # 5: continue motif generation from non-synthon, 7: padding
+        num_states = 8
         self.embedding_state = nn.Embedding(num_embeddings=8, embedding_dim=embedding_dim)
         self.embedding_atom = nn.Linear(in_features=gnn_feat_dim, out_features=embedding_dim)
         self.embedding_bond = nn.Linear(in_features=gnn_feat_dim, out_features=embedding_dim)
@@ -72,13 +73,14 @@ class RNN_model(torch.nn.Module):
             Mish(),
             nn.Linear(in_features=hidden_size, out_features=4)
         )
-                     
+                             
         self.MLP_state = nn.Sequential(
-            nn.Linear(in_features=self.hidden_size + self.hidden_size, out_features=self.hidden_size),
-            Mish(),
-            nn.Dropout(0.1),
-            nn.Linear(in_features=self.hidden_size, out_features=8)  # Assuming 8 possible states
+            nn.Linear(hidden_size + embedding_dim, hidden_size),
+            Mish(),  # or another activation function like ReLU
+            nn.Dropout(0.3),  # Adding dropout for regularization
+            nn.Linear(self.hidden_size, num_states),  # num_states corresponds to the number of possible next states
         )
+
                      
         self.bce = nn.BCEWithLogitsLoss(reduction="sum")
         self.ce = nn.CrossEntropyLoss(reduction='sum')
