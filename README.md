@@ -5,6 +5,8 @@ We recommend to new a Conda environment to run the code. We use Python-3.7, PyTo
 
 dependencies: tensorboardX
 
+see retrobrigde github for conda env as it is compatible (at lest for prepare_mol_graph.py it does not complain!)
+
 # Step-1: Data Processing
 
 Run this command to convert reactions to molecular graphs, generate motif vocabulary and transformation paths:
