@@ -1,11 +1,15 @@
 # Reference implementation of our paper: A Motif-based Autoregressive Model for Retrosynthesis Prediction
 
 # conda environment
-We recommend to new a Conda environment to run the code. We use Python-3.7, PyTorch-1.6.0, PyTorch-Geometric-2.0.2 and rdkit-202003.3.0.
+We recommend to new a Conda environment to run the code originally: "We use Python-3.7, PyTorch-1.6.0, PyTorch-Geometric-2.0.2 and rdkit-202003.3.0"
 
-dependencies: tensorboardX
+Update: Use my retrobrigde github repository to create conda env, it is compatible. https://github.com/thegodone/RetroBridge
+conda create --name retrobridge python=3.9 rdkit=2023.09.5 -c conda-forge -y
+conda activate retrobridge
+pip install -r requirements.txt (from retrobridge github)
 
-see retrobrigde github for conda env as it is compatible (at lest for prepare_mol_graph.py it does not complain!)
+conda install -c pyg -c conda-forge torch-scatter
+pip install tensorboardX
 
 # Step-1: Data Processing
 
