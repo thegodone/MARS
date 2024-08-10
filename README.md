@@ -1,9 +1,7 @@
 # Reference implementation of our paper: A Motif-based Autoregressive Model for Retrosynthesis Prediction
 
 # conda environment
-We recommend to new a Conda environment to run the code originally: "We use Python-3.7, PyTorch-1.6.0, PyTorch-Geometric-2.0.2 and rdkit-202003.3.0"
-
-use retrobridge requirement to create conda env. 
+Use retrobridge requirement to create conda env. 
 
 ```
 conda create --name retrobridge python=3.9 rdkit=2023.09.5 -c conda-forge -y
