@@ -3,12 +3,12 @@
 # conda environment
 We recommend to new a Conda environment to run the code originally: "We use Python-3.7, PyTorch-1.6.0, PyTorch-Geometric-2.0.2 and rdkit-202003.3.0"
 
-Update: Use the retrobrigde github repository (https://github.com/thegodone/RetroBridge) to create conda env. 
+use retrobridge requirement to create conda env. 
 
 ```
 conda create --name retrobridge python=3.9 rdkit=2023.09.5 -c conda-forge -y
 conda activate retrobridge
-pip install -r requirements.txt (from retrobridge github)
+pip install -r requirements.txt
 
 conda install -c pyg -c conda-forge torch-scatter
 pip install tensorboardX
